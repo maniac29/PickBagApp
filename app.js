@@ -6,6 +6,7 @@ const path = require("path");
 const ownersRouter = require("./routes/ownersRouter");
 const usersRouter = require("./routes/userRouter");
 const productsRouter = require("./routes/productsRouter");
+const baseRouter = require("./routes/index");
 
 //db
 const db = require("./config/mongoose-connection");
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname,"public")));
 
 app.set("view engine","ejs");
 
+app.use("/",baseRouter);
 app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
